@@ -1,0 +1,14 @@
+# robots.txt for ForexExchange
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://forexexchange.com/sitemap.xml
+
+# Disallow API routes
+Disallow: /api/
+
+# Disallow Next.js internal paths
+Disallow: /_next/
+Disallow: /static/
