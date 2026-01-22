@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #FFD700;
+  --black: #000000;
+  --white: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --card-bg: #1a1a1a;
+  --border: #333333;
+}
+
+[data-theme="light"] {
+  --background: #FFFFFF;
+  --foreground: #000000;
+  --card-bg: #f5f5f5;
+  --border: #e0e0e0;
 }
 
 @theme inline {
@@ -12,15 +27,37 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .currency-section {
+    flex-direction: column !important;
+  }
+  .currency-main {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .currency-graph {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 400px !important;
+  }
+  .currency-cards-container {
+    height: auto !important;
+    min-height: 500px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .currency-nav-row {
+    flex-direction: column !important;
+  }
+  .currency-nav-row > div {
+    width: 100% !important;
+  }
 }
