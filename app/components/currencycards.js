@@ -13,7 +13,7 @@ export default function CurrencyCards({ baseCurrency = "AUD", onCurrencyClick, s
   const [lastUpdated, setLastUpdated] = useState(null);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const gold = '#FFD700';
+  const gold = isDark ? '#FFD700' : '#B8860B';
   const textColor = isDark ? '#FFFFFF' : '#000000';
   const borderColor = isDark ? '#333' : '#e0e0e0';
 

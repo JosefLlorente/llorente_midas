@@ -12,7 +12,7 @@ export default function SearchNav({ onSearchChange }) {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
   const textColor = isDark ? '#FFFFFF' : '#000000';
-  const gold = '#FFD700';
+  const gold = isDark ? '#FFD700' : '#B8860B';
 
   const suggestion = search ? Object.entries(currencyNames).find(([code, name]) => code.toLowerCase().startsWith(search.toLowerCase()) || name.toLowerCase().startsWith(search.toLowerCase())) : null;
   const suggestionText = suggestion ? suggestion[1] : "";

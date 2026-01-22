@@ -16,7 +16,7 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const gold = '#FFD700';
+  const gold = isDark ? '#FFD700' : '#B8860B';
   const bgColor = isDark ? '#000000' : '#FFFFFF';
   const textColor = isDark ? '#FFFFFF' : '#000000';
   const cardBg = isDark ? '#1a1a1a' : '#f5f5f5';
@@ -53,7 +53,7 @@ export default function Home() {
       <p style={{fontWeight: "100", fontSize: "clamp(14px, 2vw, 18px)", marginTop: 25, opacity: 0.7}}>Learn and explore the world of currency exchange through clear, data-driven insights. Delve deeper into market trends, {!isMobile ? <><br />analyze currency movements over time, and gain a better understanding of exchange rate volatility to <br />support informed and confident financial decisions.</> : ' analyze currency movements over time, and gain a better understanding of exchange rate volatility to support informed and confident financial decisions.'}</p>
       
       <div style={{display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '15px', alignItems: 'center', justifyContent: 'center', marginTop: 'clamp(30px, 5vw, 50px)'}}>
-        <button onClick={scrollToCurrencyCards} style={{color: "black", fontWeight:"600", padding: "clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px)", fontSize: "clamp(16px, 3vw, 20px)", borderRadius: 10, backgroundColor: gold, cursor: "pointer", border: 'none', transition: 'all 0.3s ease', width: isMobile ? '100%' : 'fit-content', maxWidth: '200px'}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = '#FFC700'; e.currentTarget.style.transform = 'scale(1.05)';}} onMouseLeave={(e) => {e.currentTarget.style.backgroundColor = gold; e.currentTarget.style.transform = 'scale(1)';}}>Get Started</button>
+        <button onClick={scrollToCurrencyCards} style={{color: "black", fontWeight:"600", padding: "clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px)", fontSize: "clamp(16px, 3vw, 20px)", borderRadius: 10, backgroundColor: gold, cursor: "pointer", border: 'none', transition: 'all 0.3s ease', width: isMobile ? '100%' : 'fit-content', maxWidth: '200px'}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = '#FFC700'; e.currentTarget.style.transform = 'scale(1.05)';}} onMouseLeave={(e) => {e.currentTarget.style.backgroundColor = gold; }}>Get Started</button>
         <button onClick={scrollToHowItWorks} style={{color: isDark ? gold : 'black', border: `2px solid ${gold}`, fontWeight:"500", padding: "clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px)", fontSize: "clamp(16px, 3vw, 20px)", borderRadius: 10, backgroundColor: "transparent", cursor: "pointer", transition: 'all 0.3s ease', width: isMobile ? '100%' : 'fit-content', maxWidth: '200px'}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = gold; e.currentTarget.style.color = 'black';}} onMouseLeave={(e) => {e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = isDark ? gold : 'black';}}>Learn More</button>
       </div>
     </div>

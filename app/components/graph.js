@@ -11,7 +11,7 @@ export default function Graph({ baseCurrency = "AUD", targetCurrency = "EUR" }) 
     const [loading, setLoading] = useState(true);
     const { theme } = useTheme();
     const isDark = theme === 'dark';
-    const gold = '#FFD700';
+    const gold = isDark ? '#FFD700' : '#B8860B';
     const textColor = isDark ? '#FFFFFF' : '#000000';
 
     useEffect(() => {

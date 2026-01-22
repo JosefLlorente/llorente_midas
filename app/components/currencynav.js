@@ -5,7 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 export default function CurrencyNav({ onChange }) {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
-    const gold = '#FFD700';
+    const gold = isDark ? '#FFD700' : '#B8860B';
     const bgColor = isDark ? '#1a1a1a' : '#f5f5f5';
     const textColor = isDark ? '#FFFFFF' : '#000000';
     const borderColor = isDark ? '#333' : '#e0e0e0';
