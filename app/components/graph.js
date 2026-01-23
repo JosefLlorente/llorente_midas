@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Chart } from 'chart.js/auto';
 import { useTheme } from '../context/ThemeContext';
+import { fetchHistoricalRates } from '../services/fetch';
 
 export default function Graph({ baseCurrency = "AUD", targetCurrency = "EUR" }) {
     const chartRef = useRef(null);
@@ -15,27 +16,18 @@ export default function Graph({ baseCurrency = "AUD", targetCurrency = "EUR" }) 
     const textColor = isDark ? '#FFFFFF' : '#000000';
 
     useEffect(() => {
-        const fetchHistoricalData = async () => {
+        const loadHistoricalData = async () => {
             setLoading(true);
             try {
-                const endDate = new Date().toISOString().split('T')[0];
-                const startDate = '1999-01-01';
+                const data = await fetchHistoricalRates(baseCurrency, targetCurrency);
                 
-                const res = await fetch(`https://api.frankfurter.dev/v1/${startDate}..${endDate}?base=${baseCurrency}&symbols=${targetCurrency}`);
-                
-                if (!res.ok) {
-                    throw new Error(`API error: ${res.status} ${res.statusText}`);
-                }
-                
-                const data = await res.json();
-                
-                if (!data.rates || typeof data.rates !== 'object') {
+                if (!data || !data.rates || typeof data.rates !== 'object') {
                     setLoading(false);
                     return;
                 }
                 
                 const dates = Object.keys(data.rates).sort();
-                const actualStartDate = dates[0] || startDate;
+                const actualStartDate = dates[0] || '1999-01-01';
                 const rates = dates.map(date => {
                     const rateData = data.rates[date];
                     if (typeof rateData === 'object' && rateData !== null) {
@@ -101,7 +93,7 @@ export default function Graph({ baseCurrency = "AUD", targetCurrency = "EUR" }) 
             }
         };
 
-        fetchHistoricalData();
+        loadHistoricalData();
 
         return () => {
             if (chartInstance.current) {

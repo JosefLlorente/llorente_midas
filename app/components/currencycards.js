@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from '../context/ThemeContext';
+import { fetchLatestRates } from '../services/fetch';
 
 const currencyNames = {
   AUD: "Australian Dollar", CAD: "Canadian Dollar", CHF: "Swiss Franc", CNY: "Chinese Renminbi Yuan", CZK: "Czech Koruna", DKK: "Danish Krone", EUR: "Euro", GBP: "British Pound", HKD: "Hong Kong Dollar", HUF: "Hungarian Forint", IDR: "Indonesian Rupiah", ILS: "Israeli New Shekel", INR: "Indian Rupee", ISK: "Icelandic Króna", JPY: "Japanese Yen", KRW: "South Korean Won", MXN: "Mexican Peso", MYR: "Malaysian Ringgit", NOK: "Norwegian Krone", NZD: "New Zealand Dollar", PHP: "Philippine Peso", PLN: "Polish Złoty", RON: "Romanian Leu", SEK: "Swedish Krona", SGD: "Singapore Dollar", THB: "Thai Baht", TRY: "Turkish Lira", USD: "United States Dollar", ZAR: "South African Rand"
@@ -18,18 +19,15 @@ export default function CurrencyCards({ baseCurrency = "AUD", onCurrencyClick, s
   const borderColor = isDark ? '#333' : '#e0e0e0';
 
   useEffect(() => {
-    const fetchRates = async () => {
-      try {
-        const res = await fetch(`https://api.frankfurter.dev/v1/latest?base=${baseCurrency}`);
-        const data = await res.json();
+    const loadRates = async () => {
+      const data = await fetchLatestRates(baseCurrency);
+      if (data) {
         const filteredRates = Object.fromEntries(Object.entries(data.rates || {}).filter(([code]) => code !== 'BRL'));
         setRates(filteredRates);
         setLastUpdated(new Date(data.date).toLocaleString());
-      } catch (error) {
-        console.error('Error fetching rates:', error);
       }
     };
-    fetchRates();
+    loadRates();
   }, [baseCurrency]);
 
   const allItems = Object.entries(rates);
