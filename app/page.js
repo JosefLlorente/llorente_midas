@@ -118,7 +118,7 @@ export default function Home() {
             <CurrencyCards baseCurrency={baseCurrency} onCurrencyClick={setTargetCurrency} searchQuery={searchQuery} />
           </div>
         </div>
-        <div className="currency-graph" style={{color: textColor, width: '100%', maxWidth: isMobile ? '100%' : 500, height: isMobile ? '400px' : 680, background: cardBg, borderRadius: 8, boxShadow: isDark ? '0 2px 16px rgba(255, 215, 0, 0.1)' : '0 2px 16px rgba(0, 0, 0, 0.13)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: "clamp(15px, 3vw, 20px)", border: `1px solid ${isDark ? '#333' : '#e0e0e0'}`}}>
+        <div className="currency-graph" style={{color: textColor, width: '100%', maxWidth: isMobile ? '100%' : 500, height: isMobile ? '400px' : 680, background: cardBg, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: "clamp(15px, 3vw, 20px)", border: `1px solid ${isDark ? '#333' : '#e0e0e0'}`}}>
           <Graph baseCurrency={baseCurrency} targetCurrency={targetCurrency} />
         </div>
       </div>
