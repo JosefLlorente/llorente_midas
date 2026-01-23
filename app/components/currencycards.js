@@ -42,7 +42,7 @@ export default function CurrencyCards({ baseCurrency = "AUD", onCurrencyClick, s
   }, [searchQuery]);
 
   return (
-    <div style={{ width: '100%', height: '500px', minHeight: '500px', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ width: '100%', height: '500px', minHeight: '535px', display: 'flex', flexDirection: 'column' }}>
       <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', gap: "clamp(8px, 2vw, 10px)", minHeight: 0, overflow: 'hidden', marginBottom: 10 }}>
         {currentItems.map(([code, rate]) => (
           <div key={code} onClick={() => onCurrencyClick && onCurrencyClick(code)} style={{ padding: "clamp(10px, 2vw, 15px)", color: textColor, border: `1px solid ${borderColor}`, borderRadius: 8, transition: 'all 0.3s ease', cursor: 'pointer' }} onMouseEnter={(e) => {e.currentTarget.style.borderColor = gold; e.currentTarget.style.backgroundColor = isDark ? '#2a2a2a' : '#fafafa';}} onMouseLeave={(e) => {e.currentTarget.style.borderColor = borderColor; e.currentTarget.style.backgroundColor = 'transparent';}}>
