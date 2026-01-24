@@ -8,6 +8,7 @@ import NavBar from './components/navbar';
 import Graph from './components/graph';
 import HandshakeImg from './assets/handshake.jpg';
 import { useTheme } from './context/ThemeContext';
+import { Linkedin, Github, Instagram } from 'lucide-react';
 
 export default function Home() {
   const [baseCurrency, setBaseCurrency] = useState('USD');
@@ -123,6 +124,15 @@ export default function Home() {
         </div>
       </div>
     </div>
+
+    <footer style={{ textAlign: 'center', padding: '20px', marginTop: 20, borderTop: `1px solid ${isDark ? '#333' : '#e0e0e0'}`, color: textColor }}>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 12 }}>
+        <a href="https://www.linkedin.com/in/josef-llorente-b40540324/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ width: 36, height: 36, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${textColor}`, color: textColor, textDecoration: 'none', transition: 'all 180ms ease' }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = textColor; }}><Linkedin size={18} /></a>
+        <a href="https://github.com/JosefLlorente" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={{ width: 36, height: 36, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${textColor}`, color: textColor, textDecoration: 'none', transition: 'all 180ms ease' }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = textColor; }}><Github size={18} /></a>
+        <a href="https://www.instagram.com/ju_sipsip/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ width: 36, height: 36, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${textColor}`, color: textColor, textDecoration: 'none', transition: 'all 180ms ease' }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = textColor; }}><Instagram size={18} /></a>
+      </div>
+      <div style={{ marginTop: 10, fontSize: 13, opacity: 0.85 }}>© 2026 MIDAS. All rights reserved.</div>
+    </footer>
     </div>
   );
 }
